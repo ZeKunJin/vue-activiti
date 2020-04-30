@@ -1,0 +1,6 @@
+export const START = 'start'
+export const APPROVER = 'approver'
+export const ROUTE = 'route'
+export const NOTIFIER = 'notifier'
+export const CONDITION = 'condition'
+export const UNKNOWN = 'unknown'
