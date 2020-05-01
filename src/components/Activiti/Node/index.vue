@@ -1,8 +1,12 @@
 <template>
   <div class="node-layout">
-    <component :is="value.type" :content="value" />
+    <component :is="value.type" :content="value" :activiti_id="activiti_id" />
 
-    <node v-if="value.childNode && value.childNode.nodeId" :value="value.childNode" />
+    <node
+      v-if="value.childNode && value.childNode.nodeId"
+      :value="value.childNode"
+      :activiti_id="activiti_id"
+    />
   </div>
 </template>
 
@@ -11,6 +15,7 @@ import Start from './Start'
 import Approver from './Approver'
 import Notifier from './Notifier'
 import Route from './Route'
+import Condition from './Condition'
 
 export default {
   name: 'Node',
@@ -21,6 +26,11 @@ export default {
       default: () => {
         return {}
       }
+    },
+
+    activiti_id: {
+      type: String,
+      default: ''
     }
   },
 
@@ -28,7 +38,8 @@ export default {
     Start,
     Approver,
     Notifier,
-    Route
+    Route,
+    Condition
   }
 }
 </script>

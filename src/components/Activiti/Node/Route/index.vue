@@ -2,15 +2,12 @@
   <div class="basic-node-layout">
     <table class="route">
       <tr>
-        <td v-for="item in content.conditionNodes" :key="item.nodeId">
-          <a class="node-block-container condition">
-            <div class="header">{{ item.node.name }}</div>
-            <div class="container">nodeId: {{ item.node.nodeId }}</div>
-          </a>
+        <td v-for="(item, index) in content.conditionNodes" :key="item.nodeId">
+          <div class="condition-row-line top" :style="!index ? 'left: 50%;' : ''" />
+          <div class="condition-col-line" />
+          <activiti :activitiResource="item" />
 
-          <create-button @select="onSelect" />
-
-          <node :value="item.node.childNode" />
+          <div class="condition-row-line bottom" :style="!index ? 'left: 50%;' : ''" />
         </td>
       </tr>
     </table>
@@ -30,6 +27,11 @@ export default {
       default: () => {
         return {}
       }
+    },
+
+    activiti_id: {
+      type: String,
+      default: ''
     }
   },
 
@@ -39,26 +41,46 @@ export default {
 
   methods: {
     onSelect(type) {
-      const { content: node } = this
-      bus.$emit('insert', { node, type })
+      const { content: node, activiti_id } = this
+      bus.$emit('insert', { node, type, activiti_id })
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.above {
+  position: relative;
+  z-index: 9;
+}
+
 .basic-node-layout {
   position: relative;
   text-align: center;
 
   .route {
+    position: relative;
     width: 100%;
     margin: auto;
     padding: 0;
-    th {
+    margin-top: -2px;
+    z-index: 9;
+    background-color: #ffffff;
+
+    td {
       vertical-align: top;
       position: relative;
       padding: 0;
+    }
+    td::before {
+      content: '';
+      display: block;
+      width: 2px;
+      height: 64px;
+      background-color: #bebebe;
+      margin: auto;
+      position: relative;
+      z-index: 9;
     }
   }
 
@@ -76,18 +98,31 @@ export default {
       padding: 10px 16px;
     }
   }
+}
 
-  .condition {
-    .header {
-      width: 100%;
-      border-radius: 4px 4px 0 0;
-      background-color: #52c41a;
-      color: #ffffff;
-      line-height: 24px;
-      height: 24px;
-      padding: 0 8px;
-      font-size: 10px;
-    }
-  }
+.condition-col-line {
+  width: 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: #bebebe;
+  left: 50%;
+  transform: translate(-50%; 0);
+  z-index: 0;
+}
+
+.condition-row-line {
+  width: 50%;
+  height: 2px;
+  background-color: #bebebe;
+  position: absolute;
+}
+
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
 }
 </style>

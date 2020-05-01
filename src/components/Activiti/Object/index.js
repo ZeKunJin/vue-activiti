@@ -5,8 +5,17 @@ const defaultEquals = (a, b) => {
   return a.nodeId === b.nodeId
 }
 
+const activitiId = (length = 8) => {
+  return Number(
+    Math.random()
+      .toString()
+      .substr(3, length) + Date.now()
+  ).toString(36)
+}
+
 export default class Activiti {
   constructor(type = START, equalsFn = defaultEquals) {
+    this.activitiId = activitiId()
     this.count = 1
     this.equalsFn = equalsFn
     this.node = new Node(type)

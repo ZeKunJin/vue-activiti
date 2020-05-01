@@ -1,6 +1,6 @@
 <template>
   <div class="basic-node-layout">
-    <a class="node-block-container start">
+    <a class="node-block-container condition">
       <div class="header">{{ content.name }}</div>
       <div class="container">nodeId: {{ content.nodeId }}</div>
     </a>
@@ -61,11 +61,11 @@ export default {
     }
   }
 
-  .start {
+  .condition {
     .header {
       width: 100%;
       border-radius: 4px 4px 0 0;
-      background-color: #576a95;
+      background-color: #52c41a;
       color: #ffffff;
       line-height: 24px;
       height: 24px;

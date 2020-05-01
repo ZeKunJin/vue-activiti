@@ -20,6 +20,11 @@ export default {
       default: () => {
         return {}
       }
+    },
+
+    activiti_id: {
+      type: String,
+      default: ''
     }
   },
 
@@ -29,8 +34,8 @@ export default {
 
   methods: {
     onSelect(type) {
-      const { content: node } = this
-      bus.$emit('insert', { node, type })
+      const { content: node, activiti_id } = this
+      bus.$emit('insert', { node, type, activiti_id })
     }
   }
 }

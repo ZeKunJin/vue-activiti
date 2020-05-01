@@ -68,3 +68,15 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.tool-tip-layout {
+  width: 2px;
+  height: 94px;
+  background-color: #bebebe;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
