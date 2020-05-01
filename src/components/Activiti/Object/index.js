@@ -1,5 +1,5 @@
 import Node from './Node'
-import { START } from './Node/node-types'
+import { START } from '../node-types'
 
 const defaultEquals = (a, b) => {
   return a.nodeId === b.nodeId

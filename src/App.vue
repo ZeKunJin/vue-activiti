@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <flow :defaultValue="defaultValue" />
+    <activiti :activitiResource="activitiResource" @refresh="onRefresh" />
   </div>
 </template>
 
 <script>
-import Flow from '@/components/Flow'
-import Activiti from '@/object/Activiti'
+import Activiti from '@/components/Activiti'
+import ActivitiObject from '@/components/Activiti/Object'
 
 export default {
   name: 'App',
 
   components: {
-    Flow
+    Activiti
   },
 
   data() {
     return {
-      defaultValue: new Activiti()
+      activitiResource: new ActivitiObject()
+    }
+  },
+
+  methods: {
+    onRefresh(e) {
+      this.activitiResource = e
     }
   }
 }

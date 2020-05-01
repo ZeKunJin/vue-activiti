@@ -1,5 +1,5 @@
 import Activiti from '../index'
-import { START, APPROVER, ROUTE, NOTIFIER, CONDITION, UNKNOWN } from './node-types'
+import { START, APPROVER, ROUTE, NOTIFIER, CONDITION, UNKNOWN } from '../../node-types'
 
 const nodeId = (length = 8) => {
   return Number(
