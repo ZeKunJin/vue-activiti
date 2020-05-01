@@ -22,6 +22,7 @@ import Approver from './Approver'
 import Notifier from './Notifier'
 import Route from './Route'
 import Condition from './Condition'
+import End from './End'
 
 export default {
   name: 'Node',
@@ -50,7 +51,8 @@ export default {
     Approver,
     Notifier,
     Route,
-    Condition
+    Condition,
+    End
   }
 }
 </script>

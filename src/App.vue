@@ -7,6 +7,7 @@
 <script>
 import Activiti from '@/components/Activiti'
 import ActivitiObject from '@/components/Activiti/Object'
+import { END } from '@/components/Activiti/node-types'
 
 export default {
   name: 'App',
@@ -19,6 +20,10 @@ export default {
     return {
       activitiResource: new ActivitiObject()
     }
+  },
+
+  mounted() {
+    this.activitiResource.push({ type: END })
   },
 
   methods: {
