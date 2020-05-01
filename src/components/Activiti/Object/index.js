@@ -22,8 +22,8 @@ export default class Activiti {
   }
 
   push(element) {
-    const { type, name } = element
-    const node = new Node(type, name)
+    const { type, name, properties, childNode, conditionNodes } = element
+    const node = new Node(type, name, properties, childNode, conditionNodes)
     const current = this.getElementAt(this.count - 1)
     current.childNode = node
     this.count++
@@ -33,8 +33,8 @@ export default class Activiti {
     if (position > this.count) {
       this.push(element)
     } else {
-      const { type, name } = element
-      const node = new Node(type, name)
+      const { type, name, properties, childNode, conditionNodes } = element
+      const node = new Node(type, name, properties, childNode, conditionNodes)
 
       if (!position) {
         node.childNode = this.node

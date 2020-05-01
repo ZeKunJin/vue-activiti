@@ -1,7 +1,10 @@
 <template>
   <div class="basic-node-layout">
     <a class="node-block-container notifier">
-      <div class="header">{{ content.name }}</div>
+      <div class="header">
+        {{ content.name }}
+        <a-icon type="close" @click.prevent="remove" />
+      </div>
       <div class="container">nodeId: {{ content.nodeId }}</div>
     </a>
 
@@ -10,8 +13,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import bus from '@/utils/bus'
 import CreateButton from '../../CreateButton'
+import { Icon } from 'ant-design-vue'
+Vue.use(Icon)
 
 export default {
   props: {
@@ -36,6 +42,11 @@ export default {
     onSelect(type) {
       const { content: node, activiti_id } = this
       bus.$emit('insert', { node, type, activiti_id })
+    },
+
+    remove() {
+      const { content: node, activiti_id } = this
+      bus.$emit('remove', { node, activiti_id })
     }
   }
 }
@@ -71,6 +82,9 @@ export default {
       height: 24px;
       padding: 0 8px;
       font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }

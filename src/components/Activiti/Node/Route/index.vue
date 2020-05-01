@@ -1,6 +1,6 @@
 <template>
   <div class="basic-node-layout">
-    <table class="route">
+    <table class="route" :style="`background-color: ${backgroundColor}`">
       <tr>
         <td v-for="(item, index) in content.conditionNodes" :key="item.nodeId">
           <div class="condition-row-line top" :style="!index ? 'left: 50%;' : ''" />
@@ -32,6 +32,11 @@ export default {
     activiti_id: {
       type: String,
       default: ''
+    },
+
+    backgroundColor: {
+      type: String,
+      default: '#ffffff'
     }
   },
 
@@ -39,10 +44,50 @@ export default {
     CreateButton
   },
 
+  mounted() {
+    bus.$on('removeCondition', this.onRemoveCondition)
+  },
+
   methods: {
     onSelect(type) {
       const { content: node, activiti_id } = this
       bus.$emit('insert', { node, type, activiti_id })
+    },
+
+    onRemoveCondition(e) {
+      const { content } = this
+      const { activiti_id } = e
+      const index = this.getConditionAt(activiti_id)
+      if (index > -1) {
+        this.content.conditionNodes.splice(index, 1)
+      }
+
+      if (content.conditionNodes.length < 2) {
+        const [conditionNode] = content.conditionNodes
+
+        if (
+          conditionNode.node &&
+          conditionNode.node.childNode &&
+          conditionNode.node.childNode.nodeId
+        ) {
+          const { activiti_id } = this
+          const { childNode: replaceNode } = conditionNode.node
+          bus.$emit('replace', { node: content, activiti_id, replaceNode })
+        } else {
+          const { activiti_id } = this
+          bus.$emit('remove', { node: content, activiti_id })
+        }
+      }
+    },
+
+    getConditionAt(activiti_id) {
+      for (let i = 0; i < this.content.conditionNodes.length; i++) {
+        if (this.content.conditionNodes[i].activitiId === activiti_id) {
+          return i
+        }
+      }
+
+      return -1
     }
   }
 }
@@ -65,7 +110,6 @@ export default {
     padding: 0;
     margin-top: -2px;
     z-index: 9;
-    background-color: #ffffff;
 
     td {
       vertical-align: top;

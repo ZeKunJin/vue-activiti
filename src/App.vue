@@ -28,3 +28,9 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+#app {
+  padding: 24px;
+}
+</style>

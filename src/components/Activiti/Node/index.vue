@@ -1,11 +1,17 @@
 <template>
   <div class="node-layout">
-    <component :is="value.type" :content="value" :activiti_id="activiti_id" />
+    <component
+      :is="value.type"
+      :content="value"
+      :activiti_id="activiti_id"
+      :backgroundColor="backgroundColor"
+    />
 
     <node
       v-if="value.childNode && value.childNode.nodeId"
       :value="value.childNode"
       :activiti_id="activiti_id"
+      :backgroundColor="backgroundColor"
     />
   </div>
 </template>
@@ -31,6 +37,11 @@ export default {
     activiti_id: {
       type: String,
       default: ''
+    },
+
+    backgroundColor: {
+      type: String,
+      default: '#ffffff'
     }
   },
 
