@@ -1,24 +1,36 @@
 # vue-activiti
 
-## Project setup
-```
-npm install
-```
+An activiti component of vue. Based on [Ant Design of Vue](https://vuecomponent.github.io/ant-design-vue/docs/vue/introduce-cn/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Overview
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Env and dependencies
 
-### Lints and fixes files
-```
-npm run lint
-```
+* node
+* webpack
+* Eslint
+* @vue/cli ~3
+* ant-design-vue
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Project setup
+
+* Clone repo
+
+  ```
+  git clone https://github.com/ZeKunJin/vue-activiti
+  cd vue-activiti
+  ```
+
+* Install dependencies
+
+  ```
+  npm i
+  ```
+
+* Compiles for development
+
+  ```
+  npm run serve
+  ```
+
+  

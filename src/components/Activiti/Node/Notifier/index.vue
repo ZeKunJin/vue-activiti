@@ -14,7 +14,7 @@
 
 <script>
 import Vue from 'vue'
-import bus from '@/utils/bus'
+import bus from '../../bus'
 import CreateButton from '../../CreateButton'
 import { Icon } from 'ant-design-vue'
 Vue.use(Icon)

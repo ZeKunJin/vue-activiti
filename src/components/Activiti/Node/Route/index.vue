@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import bus from '@/utils/bus'
+import bus from '../../bus'
 import CreateButton from '../../CreateButton'
 
 export default {

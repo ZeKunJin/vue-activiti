@@ -12,7 +12,7 @@
 
 <script>
 import Vue from 'vue'
-import bus from '@/utils/bus'
+import bus from '../Activiti/bus'
 import Node from './Node'
 import Activiti from './index'
 import { CONDITION } from './node-types'
