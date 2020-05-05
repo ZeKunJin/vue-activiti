@@ -8,7 +8,7 @@ An activiti component of vue. Based on [Ant Design of Vue](https://vuecomponent.
 
 * node
 * webpack
-* Eslint
+* eslint
 * @vue/cli ~3
 * ant-design-vue
 
