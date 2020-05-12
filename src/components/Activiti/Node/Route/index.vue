@@ -5,7 +5,7 @@
         <td v-for="(item, index) in content.conditionNodes" :key="item.nodeId">
           <div class="condition-row-line top" :style="!index ? 'left: 50%;' : ''" />
           <div class="condition-col-line" />
-          <activiti :activitiResource="item" />
+          <activiti :activitiResource="item" :backgroundColor="backgroundColor" />
 
           <div class="condition-row-line bottom" :style="!index ? 'left: 50%;' : ''" />
         </td>
